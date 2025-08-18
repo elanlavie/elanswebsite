@@ -7,6 +7,19 @@
   <meta name="description" content="Portfolio of Elan Lavie — engineering, astronomy, science blog, songleading, and dance." />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="favicon/favicon.ico" />
+  <style>
+    /* Override just for this image */
+    .profile-pic {
+      display: block;
+      max-width: 400px;  /* adjust as you like */
+      width: 100%;
+      height: auto;
+      border-radius: 14px; /* optional: rounded corners */
+      margin: 0 auto;      /* center the image */
+      border: none;        /* remove frame */
+      background: transparent; /* no black box */
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -26,32 +39,19 @@
   </header>
 
   <main class="container">
-    <section class="card">
+    <section>
       <h1>Hi, I’m Elan!</h1>
-      <p class="lead">STEAM Educator • Songleader • Dancer</p>
-      <img class="media" src="assets/img/ElanVandeGraf.JPG" alt="Photo of Elan Lavie" />
-      <div class="spacer"></div>
-      <div class="grid cols-3">
-        <a class="card" href="engineering-honors.html"><h3>Engineering Honors</h3><p class="muted">Selected projects and teaching artifacts.</p></a>
-        <a class="card" href="astronomy-honors.html"><h3>Astronomy Honors</h3><p class="muted">Research, outreach, and publications.</p></a>
-        <a class="card" href="blog.html"><h3>Science Blog</h3><p class="muted">Posts from laviedalocascience.</p></a>
-        <a class="card" href="songleading.html"><h3>Songleading</h3><p class="muted">Community, music, and teaching.</p></a>
-        <a class="card" href="dance.html"><h3>Dance</h3><p class="muted">Social dance and performances.</p></a>
-        <a class="card" href="about.html"><h3>About</h3><p class="muted">Short bio, contact, and media kit.</p></a>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>Featured Media</h2>
-      <div class="grid cols-3">
-        <!-- Replace src with your own images/videos in /assets/img or /assets/video -->
-        <img class="media" src="assets/img/featured-1.jpg" alt="Featured 1" />
-        <img class="media" src="assets/img/featured-2.jpg" alt="Featured 2" />
-        <video class="media" controls src="assets/video/featured-clip.mp4"></video>
-      </div>
+      <p class="lead">Educator • Musician • Dancer</p>
+      <img class="profile-pic" src="assets/img/ElanVandeGraf.JPG" alt="Photo of Elan Lavie" />
     </section>
   </main>
 
-  <footer class="footer"><div class="container inner"><div class="muted">© <span data-year></span> Elan Lavie</div><div class="muted">Built with plain HTML/CSS • Hosted on GitHub Pages</div></div></footer>
+  <footer class="footer">
+    <div class="container inner">
+      <div class="muted">© <span data-year></span> Elan Lavie</div>
+      <div class="muted">Built with plain HTML/CSS • Hosted on GitHub Pages</div>
+    </div>
+  </footer>
   <script src="scripts.js" defer></script>
 </body>
+</html>
