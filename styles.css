@@ -111,22 +111,56 @@ small, .muted { color: var(--muted); }
   font-weight: 800;                   /* optional: make it pop */
 }
 
+
+/* Make thumbnails show zoom cursor (optional) */
+.zoomable { cursor: zoom-in; }
+
+/* --- Click-to-enlarge lightbox (CSS-only) --- */
 .lightbox {
-  display: none;
   position: fixed;
-  z-index: 999;
-  top: 0; left: 0; width: 100%; height: 100%;
+  inset: 0;
+  display: flex;                 /* center the image */
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
   background: rgba(0,0,0,0.8);
-  text-align: center;
+  z-index: 1000;                 /* above header */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 160ms ease, visibility 0s linear 160ms;
 }
 
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  margin-top: 5%;
-  border-radius: 8px;
-}
-
+/* when targeted via #id */
 .lightbox:target {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 160ms ease;
+}
+
+/* full-screen clickable backdrop to close */
+.lightbox__close {
+  position: absolute;
+  inset: 0;
+  cursor: zoom-out;
+}
+
+/* the enlarged image */
+.lightbox__img {
+  position: relative;            /* sits above the backdrop link */
+  z-index: 1;
+  max-width: min(92vw, 1400px);
+  max-height: 92vh;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transform: scale(.98);
+  transition: transform 160ms ease;
+}
+.lightbox:target .lightbox__img { transform: scale(1); }
+
+/* prevent background scroll while lightbox is open (modern browsers) */
+@supports selector(:has(*)) {
+  html:has(.lightbox:target),
+  body:has(.lightbox:target) { overflow: hidden; }
 }
