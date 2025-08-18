@@ -6,24 +6,92 @@
   <title>Dance — Elan Lavie</title>
   <meta name="description" content="Social dance, swing, and performances." />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* --- Click-to-enlarge lightbox (CSS-only) --- */
+    .zoomable { cursor: zoom-in; }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;                 /* hidden until targeted */
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;                 /* above header */
+      cursor: default;
+    }
+    .lightbox:target { display: flex; }
+
+    /* clickable background to close (but not the image) */
+    .lightbox__close {
+      position: absolute;
+      inset: 0;
+      cursor: zoom-out;
+    }
+
+    .lightbox__img {
+      position: relative;
+      z-index: 1;                    /* sits above the close layer */
+      max-width: min(90vw, 1400px);
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
-  <header class="header"><div class="container nav"><div class="brand"><a href="index.html">Elan Lavie</a><span class="badge">Portfolio</span></div><nav class="navlinks" aria-label="Main navigation"><a href="about.html">About</a><a href="engineering-honors.html">Engineering Honors</a><a href="astronomy-honors.html">Astronomy Honors</a><a href="blog.html">Science Blog</a><a href="songleading.html">Songleading</a><a href="dance.html">Dance</a></nav><div class="nav-actions"><button id="themeToggle" class="icon">☼</button></div></div></header>
+  <header class="header">
+    <div class="container nav">
+      <div class="brand"><a href="index.html">Elan Lavie</a><span class="badge">Portfolio</span></div>
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="about.html">About</a>
+        <a href="engineering-honors.html">Engineering Honors</a>
+        <a href="astronomy-honors.html">Astronomy Honors</a>
+        <a href="blog.html">Science Blog</a>
+        <a href="songleading.html">Songleading</a>
+        <a href="dance.html" aria-current="page">Dance</a>
+      </nav>
+      <div class="nav-actions"><button id="themeToggle" class="icon">☼</button></div>
+    </div>
+  </header>
 
   <main class="container">
     <section class="card">
       <h1>Dance</h1>
       <p class="lead">Swing, Lindy Hop, and beyond.</p>
+
       <div class="grid cols-3">
-        <img class="media" src="assets/img/dance-1.jpg" alt="Dance 1" />
-        <img class="media" src="assets/img/dance-2.jpg" alt="Dance 2" />
+        <!-- Thumbnails (click to open lightbox) -->
+        <a href="#dance1">
+          <img class="media zoomable" src="assets/img/dance-1.jpg" alt="Dance 1" />
+        </a>
+        <a href="#dance2">
+          <img class="media zoomable" src="assets/img/dance-2.jpg" alt="Dance 2" />
+        </a>
         <video class="media" controls src="assets/video/dance-demo.mp4"></video>
       </div>
     </section>
   </main>
 
-  <footer class="footer"><div class="container inner"><div class="muted">© <span data-year></span> Elan Lavie</div><div class="muted">Built with plain HTML/CSS • Hosted on GitHub Pages</div></div></footer>
+  <!-- Lightboxes (click outside the image to close) -->
+  <div id="dance1" class="lightbox">
+    <a class="lightbox__close" href="#"></a>
+    <img class="lightbox__img" src="assets/img/dance-1.jpg" alt="Dance 1 enlarged" />
+  </div>
+
+  <div id="dance2" class="lightbox">
+    <a class="lightbox__close" href="#"></a>
+    <img class="lightbox__img" src="assets/img/dance-2.jpg" alt="Dance 2 enlarged" />
+  </div>
+
+  <footer class="footer">
+    <div class="container inner">
+      <div class="muted">© <span data-year></span> Elan Lavie</div>
+      <div class="muted">Built with plain HTML/CSS • Hosted on GitHub Pages</div>
+    </div>
+  </footer>
   <script src="scripts.js" defer></script>
 </body>
 </html>
