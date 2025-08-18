@@ -8,14 +8,16 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="favicon/favicon.ico" />
   <style>
-    /* tiny helpers just for this page */
+    /* small helpers for this page */
     .actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0 20px; }
-    .btn {
-      display: inline-block; padding: 10px 14px; border-radius: 10px;
-      border: 1px solid #ffffff20; background: #ffffff10; color: var(--text);
-      text-decoration: none; font-weight: 600;
-    }
+    .btn { display: inline-block; padding: 10px 14px; border-radius: 10px;
+           border: 1px solid #ffffff20; background: #ffffff10; color: var(--text);
+           text-decoration: none; font-weight: 600; }
     .btn:hover { background: #ffffff18; }
+    .two-col { display: grid; gap: 10px; grid-template-columns: 1fr; }
+    @media (min-width: 720px){ .two-col { grid-template-columns: 1fr 1fr; } }
+    .role { margin-bottom: 14px; }
+    .where-when { color: var(--muted); }
     .pdf-frame { width: 100%; height: 900px; border: 1px solid #ffffff12; border-radius: 12px; }
     @media (max-width: 700px) { .pdf-frame { height: 70vh; } }
   </style>
@@ -39,57 +41,103 @@
   </header>
 
   <main class="container">
-    <!-- HTML Resume (great for phones & accessibility) -->
+    <!-- HTML version (mobile-friendly, accessible) -->
     <section class="card">
       <h1>Resume</h1>
-      <div class="actions">
-        <a class="btn" href="assets/resume.pdf" target="_blank" rel="noopener">Open PDF in new tab</a>
-        <a class="btn" href="assets/resume.pdf" download>Download PDF</a>
+
+      <div class="two-col">
+        <div>
+          <h2>Elan Lavie</h2>
+          <p><a href="https://mail.google.com/mail/?view=cm&to=elan.lavie@wccusd.net" target="_blank" rel="noopener">elan.lavie@wccusd.net</a></p>
+        </div>
       </div>
 
-      <!-- ===== Replace the placeholder content below with your actual resume text ===== -->
-      <h2>Experience</h2>
-      <ul>
-        <li><strong>Physics, Astronomy & Engineering Teacher</strong> — El Cerrito High School (YYYY–Present)
-          <br><span class="muted">AP CSP, Honors Engineering; curriculum design, project-based learning, community outreach.</span>
-        </li>
-        <li><strong>Astronomy Outreach & Research</strong> — (Org / Program) (YYYY–YYYY)
-          <br><span class="muted">Radio astronomy, student mentorship, public talks and demos.</span>
-        </li>
-      </ul>
+      <div class="actions">
+        <!-- If you keep the original filename, use the URL-encoded path below.
+             If you rename to assets/resume.pdf, update both links accordingly. -->
+        <a class="btn" href="assets/Elan%20Lavie%20Resume%208_18_25.pdf" target="_blank" rel="noopener">Open PDF in new tab</a>
+        <a class="btn" href="assets/Elan%20Lavie%20Resume%208_18_25.pdf" download>Download PDF</a>
+      </div>
 
       <h2>Education</h2>
       <ul>
-        <li><strong>M.Ed.</strong> — Institution (Year)</li>
-        <li><strong>B.S. Physics</strong> — Institution (Year)</li>
+        <li>
+          <strong>University of California Santa Barbara, Santa Barbara, CA</strong><br />
+          MA in Education; Single Subject Teaching Credential (Physics, Industrial &amp; Technology Education Credential) — <em>June 2019</em>
+        </li>
+        <li>
+          <strong>University of California Berkeley, Berkeley, CA</strong><br />
+          BA in Physics and Molecular &amp; Cell Biology — <em>May 2013</em>
+        </li>
       </ul>
 
-      <h2>Selected Skills</h2>
-      <ul class="tags">
-        <li class="tag">Python</li>
-        <li class="tag">JavaScript</li>
-        <li class="tag">HTML/CSS</li>
-        <li class="tag">GNU Radio</li>
-        <li class="tag">STEM Curriculum</li>
-        <li class="tag">Public Speaking</li>
-      </ul>
+      <h2>Experience</h2>
 
-      <h2>Awards & Highlights</h2>
+      <div class="role">
+        <strong>Computer Science, Engineering, Physics, and Astronomy Teacher</strong><br />
+        <span class="where-when">El Cerrito High School, El Cerrito, CA — Aug 2019–Present</span>
+        <ul>
+          <li>Developed and taught AP Computer Science Principles, Honors Engineering (project-based), Physics of the Universe, and Honors Astronomy for students from a wide range of socioeconomic backgrounds.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <strong>UC Berkeley SETI Summer Intern</strong><br />
+        <span class="where-when">UC Berkeley, Berkeley, CA — Summer 2020, 2025</span>
+        <ul>
+          <li>Worked with Dr. Steve Croft to test “Turboseti” for extracting candidate ET signals on Voyager&nbsp;1 using the Green Bank Telescope (West Virginia).</li>
+          <li>Created two Jupyter Notebook educational tutorials on GitHub, one for Turboseti and the other on an ML reverse image search.</li>
+          <li>Built a DIY radiotelescope and imaged data using GNU Radio software.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <strong>Student Teacher</strong><br />
+        <span class="where-when">Dos Pueblos Engineering Academy, Santa Barbara, CA — Aug 2018–Jun 2019</span>
+        <ul>
+          <li>Taught introductory electronics, Arduino programming, and SolidWorks in the Dos Pueblos Engineering Academy.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <strong>Graduate Student Instructor</strong><br />
+        <span class="where-when">UC Berkeley, Berkeley, CA — Sep 2017–May 2018</span>
+        <ul>
+          <li>Planned and facilitated discussion sections; wrote exam questions and graded for descriptive Astronomy courses taught by Professors Alex Filippenko and Gibor Basri.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <strong>Exploratorium Science Educator</strong><br />
+        <span class="where-when">Exploratorium, San Francisco, CA — Sep 2015–May 2017</span>
+        <ul>
+          <li>Performed engaging science demonstrations for the public; welcomed and oriented field trip students from across the Bay Area.</li>
+          <li>Received weekly trainings via the Exploratorium’s Teacher Institute.</li>
+        </ul>
+      </div>
+
+      <h2>Other Skills</h2>
       <ul>
-        <li>Recognition / Award (Year)</li>
-        <li>Publication / Talk (Year)</li>
+        <li>Conversationally fluent in Spanish</li>
       </ul>
-      <!-- ===== End placeholder content ===== -->
+
+      <h2>References</h2>
+      <ul>
+        <li><strong>Nancy Flocchini</strong> — Assistant Principal, El Cerrito High School — <a href="https://mail.google.com/mail/?view=cm&to=nancy.flocchini@wccusd.net" target="_blank" rel="noopener">nancy.flocchini@wccusd.net</a></li>
+        <li><strong>Dr. Steve Croft</strong> — UC Berkeley SETI Researcher — <a href="https://mail.google.com/mail/?view=cm&to=scroft@astro.berkeley.edu" target="_blank" rel="noopener">scroft@astro.berkeley.edu</a></li>
+        <li><strong>Melissa Woods</strong> — Physics &amp; Engineering Teacher, Dos Pueblos High School — <a href="https://mail.google.com/mail/?view=cm&to=mwoods@sbunified.org" target="_blank" rel="noopener">mwoods@sbunified.org</a></li>
+        <li><strong>Sal Alper</strong> — Field Trip Program Supervisor, Exploratorium — Work: 415-528-4444 — <a href="https://mail.google.com/mail/?view=cm&to=salper@exploratorium.edu" target="_blank" rel="noopener">salper@exploratorium.edu</a></li>
+      </ul>
     </section>
 
-    <!-- Embedded PDF (exact print layout; handy on desktop) -->
+    <!-- Embedded PDF (exact print layout) -->
     <section class="card">
       <h2>Resume (PDF)</h2>
-      <object class="pdf-frame" data="assets/resume.pdf" type="application/pdf">
+      <object class="pdf-frame" data="assets/Elan%20Lavie%20Resume%208_18_25.pdf" type="application/pdf">
         <p>
           Your browser can’t display embedded PDFs.
-          <a href="assets/resume.pdf" target="_blank" rel="noopener">Open the PDF</a> or
-          <a href="assets/resume.pdf" download>Download it</a>.
+          <a href="assets/Elan%20Lavie%20Resume%208_18_25.pdf" target="_blank" rel="noopener">Open the PDF</a> or
+          <a href="assets/Elan%20Lavie%20Resume%208_18_25.pdf" download>Download it</a>.
         </p>
       </object>
     </section>
