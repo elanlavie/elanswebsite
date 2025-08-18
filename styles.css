@@ -103,8 +103,10 @@ small, .muted { color: var(--muted); }
 
 .rainbow {
   background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text; /* for Firefox */
-  font-weight: bold;     /* make it pop */
+  background-clip: text;              /* Firefox */
+  -webkit-background-clip: text;      /* Chrome/Safari */
+  color: transparent;                 /* Firefox needs this to show the gradient */
+  -webkit-text-fill-color: transparent; /* Chrome/Safari */
+  display: inline-block;              /* helps the clip apply cleanly */
+  font-weight: 800;                   /* optional: make it pop */
 }
