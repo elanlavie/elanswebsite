@@ -74,13 +74,14 @@ small, .muted { color: var(--muted); }
 .media {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;  /* keep the box */
-  object-fit: contain;   /* fit image INSIDE, no crop */
-  background: #000;      /* letterbox color */
-  border-radius: 14px;
-  border: 1px solid #ffffff10;
-  overflow: hidden;      /* keeps rounded corners clean */
+  height: auto;
+  max-width: 100%;
+  border-radius: 14px;     /* optional: rounded corners */
+  border: 1px solid #ffffff10; /* optional: subtle frame */
+  background: transparent; /* remove black box */
+  object-fit: contain;     /* show whole image without cropping */
 }
+
 
 .caption { font-size: 14px; color: var(--muted); margin-top: 6px; }
 
