@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume — Elan Lavie</title>
+  <meta name="description" content="Resume of Elan Lavie." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon/favicon.ico" />
+  <style>
+    /* tiny helpers just for this page */
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0 20px; }
+    .btn {
+      display: inline-block; padding: 10px 14px; border-radius: 10px;
+      border: 1px solid #ffffff20; background: #ffffff10; color: var(--text);
+      text-decoration: none; font-weight: 600;
+    }
+    .btn:hover { background: #ffffff18; }
+    .pdf-frame { width: 100%; height: 900px; border: 1px solid #ffffff12; border-radius: 12px; }
+    @media (max-width: 700px) { .pdf-frame { height: 70vh; } }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <div class="brand"><a href="index.html">Elan Lavie</a></div>
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="about.html">About</a>
+        <a href="engineering-honors.html">Engineering Honors</a>
+        <a href="astronomy-honors.html">Astronomy Honors</a>
+        <a href="blog.html">Science Blog</a>
+        <a href="songleading.html">Songleading</a>
+        <a href="dance.html">Dance</a>
+        <a href="resume.html" aria-current="page">Resume</a>
+      </nav>
+      <div class="nav-actions"><button id="themeToggle" class="icon" title="Toggle light/dark">☼</button></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HTML Resume (great for phones & accessibility) -->
+    <section class="card">
+      <h1>Resume</h1>
+      <div class="actions">
+        <a class="btn" href="assets/resume.pdf" target="_blank" rel="noopener">Open P_
