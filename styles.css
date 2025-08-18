@@ -76,10 +76,10 @@ small, .muted { color: var(--muted); }
   width: 100%;
   height: auto;
   max-width: 100%;
-  border-radius: 14px;     /* optional: rounded corners */
+  border-radius: 14px;         /* optional: rounded corners */
   border: 1px solid #ffffff10; /* optional: subtle frame */
-  background: transparent; /* remove black box */
-  object-fit: contain;     /* show whole image without cropping */
+  background: transparent;     /* ✅ no black box */
+  object-fit: contain;         /* show whole image, no crop */
 }
 
 
