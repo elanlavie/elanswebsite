@@ -99,3 +99,11 @@ small, .muted { color: var(--muted); }
 
 /* Optional: image hover */
 .media:hover { transform: scale(1.01); transition: transform 160ms ease; }
+
+.rainbow {
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; /* for Firefox */
+  font-weight: bold;     /* make it pop */
+}
