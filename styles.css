@@ -110,3 +110,23 @@ small, .muted { color: var(--muted); }
   display: inline-block;              /* helps the clip apply cleanly */
   font-weight: 800;                   /* optional: make it pop */
 }
+
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  text-align: center;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  margin-top: 5%;
+  border-radius: 8px;
+}
+
+.lightbox:target {
+  display: block;
+}
