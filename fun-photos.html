@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fun Photos — Elan Lavie</title>
+  <meta name="description" content="A gallery of fun photos." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon/favicon.ico" />
+  <style>
+    /* lightweight page-local lightbox */
+    .zoomable { cursor: zoom-in; }
+    .lightbox {
+      position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+      padding: 24px; background: rgba(0,0,0,.8); z-index: 1000;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 160ms ease, visibility 0s linear 160ms;
+      text-align: center;
+    }
+    .lightbox:target { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity 160ms ease; }
+    .lightbox__close { position: absolute; inset: 0; display: block; cursor: zoom-out; }
+    .lightbox__img { position: relative; z-index: 1; max-width: min(92vw, 1400px); max-height: 92vh; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+    @supports selector(:has(*)) { html:has(.lightbox:target), body:has(.lightbox:target) { overflow: hidden; } }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <div class="brand"><a href="index.html">Elan Lavie</a></div>
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="about.html">About</a>
+        <a href="engineering-honors.html">Engineering Honors</a>
+        <a href="astronomy-honors.html">Astronomy Honors</a>
+        <a href="blog.html">Science Blog</a>
+        <a href="songleading.html">Songleading</a>
+        <a href="dance.html">Dance</a>
+        <a href="resume.html">Resume</a>
+        <a href="fun-photos.html" aria-current="page">Fun Photos</a>
+      </nav>
+      <div class="nav-actions"><button id="themeToggle" class="icon" title="Toggle light/dark">☼</button></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h1>Fun Photos</h1>
+      <p class="lead">Clicks to enlarge. Click outside to close.</p>
+
+      <div class="grid cols-3">
+        <!-- Thumbnails (replace src/alt as you add pics) -->
+        <a href="#fp1"><img class="media zoomable" loading="lazy" src="assets/img/fun-1.jpg" alt="Fun photo 1"></a>
+        <a href="#fp2"><img class="media zoomable" loading="lazy" src="assets/img/fun-2.jpg" alt="Fun photo 2"></a>
+        <a href="#fp3"><img class="media zoomable" loading="lazy" src="assets/img/fun-3.jpg" alt="Fun photo 3"></a>
+        <a href="#fp4"><img class="media zoomable" loading="lazy" src="assets/img/fun-4.jpg" alt="Fun photo 4"></a>
+        <a href="#fp5"><img class="media zoomable" loading="lazy" src="assets/img/fun-5.jpg" alt="Fun photo 5"></a>
+        <a href="#fp6"><img class="media zoomable" loading="lazy" src="assets/img/fun-6.jpg" alt="Fun photo 6"></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightboxes -->
+  <div id="fp1" class="lightbox"><a class="lightbox__close" href="#"></a><img class="lightbox__img" src="assets/img/fun-1.jpg" alt="Fun photo 1 enlarged"></div>
+  <div id="fp2" class="lightbox"><a class="lightbox__close" href="#"></a><img class="lightbox__img" src="assets/img/fun-2.jpg" alt="Fun photo 2 enlarged"></div>
+  <div id="fp3" class="lightbox"><a class="lightbox__close" href="#"></a><img class="lightbox__img" src="assets/img/fun-3.jpg" alt="Fun photo 3 enlarged"></div>
+  <div id="fp4" class="lightbox"><a class="lightbox__close" href="#"></a><img class="lightbox__img" src="assets/img/fun-4.jpg" alt="Fun photo 4 enlarged"></div>
+  <div id="fp5" class="lightbox"><a class="lightbox__close" href="#"></a><img class="lightbox__img" src="assets/img/fun-5.jpg" alt="Fun photo 5 enlarged"></div>
+  <div id="fp6" class="lightbox"><a class="lightbox__close" href="#"></a><img class="lightbox__img" src="assets/img/fun-6.jpg" alt="Fun photo 6 enlarged"></div>
+
+  <footer class="footer">
+    <div class="container inner">
+      <div class="muted">© <span data-year></span> Elan Lavie</div>
+      <div class="muted">Built with plain HTML/CSS • Hosted on GitHub Pages</div>
+    </div>
+  </footer>
+  <script src="scripts.js" defer></script>
+</body>
+</html>
