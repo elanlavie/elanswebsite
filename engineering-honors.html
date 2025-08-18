@@ -6,17 +6,47 @@
   <title>Engineering Honors — Elan Lavie</title>
   <meta name="description" content="Engineering honors, projects, and awards." />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Wider container just for the hero video */
+    .container.wide { max-width: 1280px; }
+
+    /* Responsive, clean YouTube embed (no black box from card) */
+    .embed {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      height: auto;        /* respects aspect-ratio */
+      display: block;
+      border: none;        /* remove iframe border */
+      border-radius: 16px; /* match site rounded look */
+      background: transparent;
+    }
+
+    /* spacing helper between sections */
+    .section-gap { margin: 16px auto 24px; }
+  </style>
 </head>
 <body>
   <!-- Header -->
-  <header class="header"><div class="container nav"><div class="brand"><a href="index.html">Elan Lavie</a></div><nav class="navlinks" aria-label="Main navigation"><a href="about.html">About</a><a href="engineering-honors.html">Engineering Honors</a><a href="astronomy-honors.html">Astronomy Honors</a><a href="blog.html">Science Blog</a><a href="songleading.html">Songleading</a><a href="dance.html">Dance</a></nav><div class="nav-actions"><button id="themeToggle" class="icon">☼</button></div></div></header>
+  <header class="header">
+    <div class="container nav">
+      <div class="brand"><a href="index.html">Elan Lavie</a></div>
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="about.html">About</a>
+        <a href="engineering-honors.html" aria-current="page">Engineering Honors</a>
+        <a href="astronomy-honors.html">Astronomy Honors</a>
+        <a href="blog.html">Science Blog</a>
+        <a href="songleading.html">Songleading</a>
+        <a href="dance.html">Dance</a>
+      </nav>
+      <div class="nav-actions"><button id="themeToggle" class="icon">☼</button></div>
+    </div>
+  </header>
 
-  <main class="container">
-    <section class="card">
-      <h1>Engineering Honors</h1>
-      <p class="lead">Exploratorium Field Trip January 2025</p>
+  <main>
+    <!-- Wide, no-card video section -->
+    <div class="container wide section-gap">
       <iframe
-        class="media embed"
+        class="embed"
         src="https://www.youtube-nocookie.com/embed/Ff3paghb9xQ?rel=0&modestbranding=1"
         title="Engineering demo video"
         loading="lazy"
@@ -24,25 +54,35 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
+    </div>
 
-      <div class="grid cols-2">
-        <!-- Repeat card blocks for each item -->
-        <article class="card">
-          <h3>Project Title</h3>
-          <p class="muted">Short description of the project or honor. Include links, PDFs, or videos.</p>
-          <img class="media" src="assets/img/eng-1.jpg" alt="Project image" />
-          <p class="caption">Caption or context.</p>
-        </article>
-        <article class="card">
-          <h3>Award Name</h3>
-          <p class="muted">Year • Organization • One-liner.</p>
-          <img class="media" src="assets/img/eng-2.jpg" alt="Award image" />
-        </article>
-      </div>
-    </section>
+    <!-- Rest of the page content in your normal container/card -->
+    <div class="container">
+      <section class="card">
+        <h1>Engineering Honors</h1>
+        <div class="grid cols-2">
+          <article class="card">
+            <h3>Project Title</h3>
+            <p class="muted">Short description of the project or honor. Include links, PDFs, or videos.</p>
+            <img class="media" src="assets/img/eng-1.jpg" alt="Project image" />
+            <p class="caption">Caption or context.</p>
+          </article>
+          <article class="card">
+            <h3>Award Name</h3>
+            <p class="muted">Year • Organization • One-liner.</p>
+            <img class="media" src="assets/img/eng-2.jpg" alt="Award image" />
+          </article>
+        </div>
+      </section>
+    </div>
   </main>
 
-  <footer class="footer"><div class="container inner"><div class="muted">© <span data-year></span> Elan Lavie</div><div class="muted">Built with plain HTML/CSS • Hosted on GitHub Pages</div></div></footer>
+  <footer class="footer">
+    <div class="container inner">
+      <div class="muted">© <span data-year></span> Elan Lavie</div>
+      <div class="muted">Built with plain HTML/CSS • Hosted on GitHub Pages</div>
+    </div>
+  </footer>
   <script src="scripts.js" defer></script>
 </body>
 </html>
