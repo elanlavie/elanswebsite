@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Astronomy Honors — Elan Lavie</title>
+  <meta name="description" content="High Altitude Balloon" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Responsive YouTube embed */
+    .embed {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      height: auto;    /* respects aspect-ratio */
+      border: none;    /* no iframe border */
+      border-radius: 16px; /* matches your media look */
+      display: block;
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <div class="brand"><a href="index.html">Elan Lavie</a></div>
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="about.html">About</a>
+        <a href="engineering-honors.html">Engineering Honors</a>
+        <a href="highaltitudeballoon.html" aria-current="page">High Altitude Balloon</a>
+        <a href="blog.html">Science Blog</a>
+        <a href="songleading.html">Songleading</a>
+        <a href="dance.html">Dance</a>
+      </nav>
+      <div class="nav-actions"><button id="themeToggle" class="icon">☼</button></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h1>High Altitude Balloon Project</h1>
+      <p class="lead">
+        El Cerrito High School has now successfully launched and retrieved a high altitude balloon with GoPro cameras from our quad twice! The footage is super cool, with views over California spanning from the Sierras to the Ocean!! If you look closely, you might even see the moon!
+      </p>
+
+      <iframe
+        class="embed"
+        src="https://www.youtube-nocookie.com/embed/Fs67h4uVOzU?rel=0&modestbranding=1"
+        title="High Altitude Balloon Project video"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container inner">
+      <div class="muted">© <span data-year></span> Elan Lavie</div>
+      <div class="muted">Built with plain HTML/CSS • Hosted on GitHub Pages</div>
+    </div>
+  </footer>
+  <script src="scripts.js" defer></script>
+</body>
+</html>
