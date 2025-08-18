@@ -7,24 +7,55 @@
   <meta name="description" content="Community songleading, repertoire, and events." />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Lightbox overlay */
+    /* --- Click-to-enlarge lightbox (CSS-only) --- */
+    .zoomable { cursor: zoom-in; }
+
     .lightbox {
-      display: none;
       position: fixed;
-      z-index: 999;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      inset: 0;
+      display: flex;                 /* center the image */
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
       background: rgba(0,0,0,0.8);
+      z-index: 1000;                 /* above header */
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 160ms ease, visibility 0s linear 160ms;
       text-align: center;
     }
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      margin-top: 5%;
-      border-radius: 8px;
-    }
     .lightbox:target {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: opacity 160ms ease;
+    }
+
+    /* full-screen clickable backdrop to close */
+    .lightbox__close {
+      position: absolute;
+      inset: 0;
       display: block;
+      cursor: zoom-out;
+    }
+
+    /* enlarged image */
+    .lightbox__img {
+      position: relative;            /* sits above the backdrop link */
+      z-index: 1;
+      max-width: min(92vw, 1400px);
+      max-height: 92vh;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transform: scale(.98);
+      transition: transform 160ms ease;
+    }
+    .lightbox:target .lightbox__img { transform: scale(1); }
+
+    /* Optional: prevent background scroll while open (modern browsers) */
+    @supports selector(:has(*)) {
+      html:has(.lightbox:target), body:has(.lightbox:target) { overflow: hidden; }
     }
   </style>
 </head>
@@ -38,7 +69,7 @@
         <a href="engineering-honors.html">Engineering Honors</a>
         <a href="astronomy-honors.html">Astronomy Honors</a>
         <a href="blog.html">Science Blog</a>
-        <a href="songleading.html">Songleading</a>
+        <a href="songleading.html" aria-current="page">Songleading</a>
         <a href="dance.html">Dance</a>
       </nav>
       <div class="nav-actions"><button id="themeToggle" class="icon">☼</button></div>
@@ -51,24 +82,24 @@
       <p class="lead">Photos, videos, and upcoming events.</p>
 
       <div class="grid cols-2">
-        <!-- Image 1 with lightbox -->
+        <!-- Image 1: thumbnail (click to open) -->
         <a href="#img1">
-          <img class="media" src="assets/img/song-1.jpg" alt="Songleading 1" />
+          <img class="media zoomable" src="assets/img/song-1.jpg" alt="Songleading 1" />
         </a>
+        <!-- Lightbox 1 -->
         <div class="lightbox" id="img1">
-          <a href="#">
-            <img src="assets/img/song-1.jpg" alt="Songleading 1" />
-          </a>
+          <a class="lightbox__close" href="#"></a> <!-- click outside to close -->
+          <img class="lightbox__img" src="assets/img/song-1.jpg" alt="Songleading 1 enlarged" />
         </div>
 
-        <!-- Image 2 with lightbox -->
+        <!-- Image 2: thumbnail (click to open) -->
         <a href="#img2">
-          <img class="media" src="assets/img/song-2.jpg" alt="Songleading 2" />
+          <img class="media zoomable" src="assets/img/song-2.jpg" alt="Songleading 2" />
         </a>
+        <!-- Lightbox 2 -->
         <div class="lightbox" id="img2">
-          <a href="#">
-            <img src="assets/img/song-2.jpg" alt="Songleading 2" />
-          </a>
+          <a class="lightbox__close" href="#"></a> <!-- click outside to close -->
+          <img class="lightbox__img" src="assets/img/song-2.jpg" alt="Songleading 2 enlarged" />
         </div>
 
         <!-- Video (not lightboxed) -->
