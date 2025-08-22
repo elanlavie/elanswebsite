@@ -208,3 +208,16 @@ body {
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+/* Force default text color to black everywhere */
+body, body * {
+  color: #000 !important;
+}
+
+/* Optional: keep links styled differently */
+a {
+  color: #0044cc !important;   /* dark blue links */
+}
+a:visited {
+  color: #660099 !important;   /* purple-ish visited links */
+}
