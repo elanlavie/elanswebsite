@@ -221,3 +221,30 @@ a {
 a:visited {
   color: #660099 !important;   /* purple-ish visited links */
 }
+
+/* Header sizing */
+:root { --header-h: 64px; }
+@media (max-width: 640px) { :root { --header-h: 56px; } }
+
+/* Use sticky so it only pins at the top, not float over content */
+.header {
+  position: sticky !important;
+  top: 0;
+  z-index: 1000;
+  /* translucent so gradient shows, but readable on mobile */
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(140%) blur(8px);
+}
+
+/* Push page content below the header */
+main {
+  padding-top: var(--header-h);
+}
+
+/* If you have other top-level sections above <main>, pad them too */
+body > section:first-of-type {
+  padding-top: var(--header-h);
+}
+
+/* Anchor links won't hide under the header */
+[id] { scroll-margin-top: var(--header-h); }
