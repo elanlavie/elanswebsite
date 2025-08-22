@@ -172,3 +172,39 @@ body {
   from { opacity: 0.9; transform: scale(1); }
   to { opacity: 0; transform: scale(0.5); }
 }
+
+
+/* ==== Global animated gradient background (robust) ==== */
+
+/* Put the gradient on the <html> element so it sits behind everything */
+html {
+  min-height: 100%;
+  background: linear-gradient(-45deg,
+    #ff9a9e, #fad0c4, #fbc2eb,
+    #a18cd1, #f6d365, #fda085);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+}
+
+/* Keep <body> transparent so the gradient shows through */
+body {
+  background: transparent !important;
+  min-height: 100dvh;   /* mobile-safe full height */
+  margin: 0;
+}
+
+/* If any site chrome was covering the gradient, make it see-through */
+.header, .footer, .container, main, section, .card {
+  background: transparent !important;
+}
+
+/* Respect Reduce Motion: freeze the gradient instead of animating it */
+@media (prefers-reduced-motion: reduce) {
+  html { animation: none !important; }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
