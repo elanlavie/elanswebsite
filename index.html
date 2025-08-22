@@ -1,131 +1,78 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Elan Lavie</title>
-  <meta name="description" content="Portfolio of Elan Lavie — engineering, science blog, songleading, and dance." />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="favicon/favicon.ico" />
-  <style>
-    .profile-pic {
-      display: block;
-      max-width: 400px;
-      width: 100%;
-      height: auto;
-      border-radius: 14px;
-      margin: 0 auto;
-      border: none;
-      background: transparent;
+<!-- Add this just inside <body>, before your header -->
+<canvas id="starBurst"></canvas>
+
+<style>
+  #starBurst {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background: transparent;
+  }
+</style>
+
+<script>
+  const canvas = document.getElementById("starBurst");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  function random(min, max) { return Math.random() * (max - min) + min; }
+
+  class Particle {
+    constructor(x, y) {
+      this.x = x;
+      this.y = y;
+      this.size = random(2, 4);
+      this.speedX = random(-8, 8);
+      this.speedY = random(-8, 8);
+      this.color = ["#ffffff", "#ffe066", "#99ccff", "#ff99cc"][Math.floor(Math.random() * 4)];
+      this.life = 60 + Math.random() * 40; // frames
     }
-
-    /* Shooting stars canvas */
-    #shootingStars {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 9999;
-      background: transparent;
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      this.speedY += 0.2; // gravity
+      this.life--;
     }
-  </style>
-</head>
-<body>
-  <!-- Shooting stars overlay -->
-  <canvas id="shootingStars"></canvas>
+    draw() {
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
 
-  <!-- Header -->
-  <header class="header">
-    <div class="container nav">
-      <div class="brand"><a href="index.html">Elan Lavie</a></div>
-      <nav class="navlinks" aria-label="Main navigation">
-        <a href="about.html">About</a>
-        <a href="engineering-honors.html">Light Sculptures</a>
-        <a href="spaceballoon.html">Space Balloon</a>
-        <a href="blog.html">Science Blog</a>
-        <a href="songleading.html">Songleading</a>
-        <a href="dance.html">Dance</a>
-        <a href="resume.html">Resume</a>
-        <a href="fun-photos.html">Fun Photos!</a>
-      </nav>
-      <div class="nav-actions"><button id="themeToggle" class="icon" title="Toggle light/dark"></button></div>
-    </div>
-  </header>
+  const particles = [];
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 3; // a bit above center
+  for (let i = 0; i < 120; i++) {
+    particles.push(new Particle(centerX, centerY));
+  }
 
-  <main class="container">
-    <section>
-      <h1>Hi, I’m <span class="rainbow">Elan!</span></h1>
-      <p class="lead">Educator • Songleader • Dancer</p>
-      <img class="profile-pic" src="assets/img/ElanVandeGraf.JPG" alt="Photo of Elan Lavie" />
-    </section>
-  </main>
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.update();
+      p.draw();
+      if (p.life <= 0) particles.splice(i, 1);
+    });
+    if (particles.length > 0) requestAnimationFrame(animate);
+  }
 
-  <footer class="footer">
-    <div class="container inner">
-      <div class="muted">© <span data-year></span> Elan Lavie</div>
-      <div class="muted">Built with plain HTML/CSS • Hosted on GitHub Pages</div>
-    </div>
-  </footer>
+  animate();
 
-  <script>
-    // Shooting stars animation
-    const canvas = document.getElementById("shootingStars");
-    const ctx = canvas.getContext("2d");
+  // Fade out canvas after 3s
+  setTimeout(() => {
+    canvas.style.transition = "opacity 1s ease";
+    canvas.style.opacity = 0;
+    setTimeout(() => canvas.remove(), 1000);
+  }, 3000);
+
+  // Resize handling
+  window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
-    function random(min, max) { return Math.random() * (max - min) + min; }
-
-    class Star {
-      constructor() {
-        this.reset();
-      }
-      reset() {
-        this.x = random(-canvas.width, canvas.width);
-        this.y = random(-canvas.height, 0);
-        this.len = random(100, 300);
-        this.speed = random(10, 20);
-        this.angle = Math.PI / 4; // diagonal down-right
-        this.opacity = random(0.6, 1);
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.x + this.len * Math.cos(this.angle),
-                   this.y + this.len * Math.sin(this.angle));
-        ctx.strokeStyle = `rgba(255,255,255,${this.opacity})`;
-        ctx.lineWidth = 2;
-        ctx.stroke();
-      }
-      update() {
-        this.x += this.speed * Math.cos(this.angle);
-        this.y += this.speed * Math.sin(this.angle);
-        if (this.x > canvas.width || this.y > canvas.height) {
-          this.reset();
-        }
-      }
-    }
-
-    const stars = Array.from({length: 8}, () => new Star());
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      stars.forEach(star => {
-        star.update();
-        star.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    // Fade out after 3 seconds
-    setTimeout(() => {
-      canvas.style.transition = "opacity 1s ease";
-      canvas.style.opacity = 0;
-      setTimeout(() => canvas.remove(), 1000);
-    }, 3000);
-  </script>
-  <script src="scripts.js" defer></script>
-</body>
-</html>
+  });
+</script>
