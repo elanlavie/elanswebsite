@@ -10,16 +10,34 @@
   <style>
     /* lightweight page-local lightbox */
     .zoomable { cursor: zoom-in; }
+
+    figure {
+      margin: 0;
+      text-align: center;
+    }
+    figcaption {
+      font-size: 0.9rem;
+      margin-top: 4px;
+      color: #555;
+    }
+
     .lightbox {
-      position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+      position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
       padding: 24px; background: rgba(0,0,0,.8); z-index: 1000;
       opacity: 0; visibility: hidden; pointer-events: none;
       transition: opacity 160ms ease, visibility 0s linear 160ms;
       text-align: center;
+      color: #fff;
     }
     .lightbox:target { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity 160ms ease; }
     .lightbox__close { position: absolute; inset: 0; display: block; cursor: zoom-out; }
-    .lightbox__img { position: relative; z-index: 1; max-width: min(92vw, 1400px); max-height: 92vh; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+    .lightbox__img { position: relative; z-index: 1; max-width: min(92vw, 1400px); max-height: 80vh; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+    .lightbox__caption {
+      z-index: 1;
+      margin-top: 12px;
+      font-size: 1rem;
+    }
+
     @supports selector(:has(*)) { html:has(.lightbox:target), body:has(.lightbox:target) { overflow: hidden; } }
   </style>
 </head>
@@ -47,32 +65,110 @@
       <p class="lead">Click to enlarge. Click outside to close.</p>
 
       <div class="grid cols-3">
-        <!-- Thumbnails (replace src/alt as you add pics) -->
-        <a href="#fp1"><img class="media zoomable" loading="lazy" src="assets/img/ExplainerPic2.jpeg" alt="Fun photo 1"></a>
-        <a href="#fp2"><img class="media zoomable" loading="lazy" src="assets/img/ClassVandeGraf.JPG" alt="Fun photo 2"></a>
-        <a href="#fp3"><img class="media zoomable" loading="lazy" src="assets/img/ElanatEarlyGirl.jpg" alt="Fun photo 3"></a>
-        <a href="#fp4"><img class="media zoomable" loading="lazy" src="assets/img/greatwall.jpg" alt="Great Wall"></a>
-        <a href="#fp5"><img class="media zoomable" loading="lazy" src="assets/img/shanghai.jpg" alt="Shanghai"></a>
-        <a href="#fp6"><img class="media zoomable" loading="lazy" src="assets/img/tajmahal.jpg" alt="Taj Mahal"></a>
-        <a href="#fp7"><img class="media zoomable" loading="lazy" src="assets/img/karaoke.JPG" alt="Karaoke"></a>
-        <a href="#fp8"><img class="media zoomable" loading="lazy" src="assets/img/vietcooking.jpg" alt="vietnamese cooking"></a>
-        <a href="#fp9"><img class="media zoomable" loading="lazy" src="assets/img/himalayas.jpg" alt="himalayan sunrise"></a>
-        <a href="#fp10"><img class="media zoomable" loading="lazy" src="assets/img/radiotelescope.jpg" alt="Radio Telescope"></a>
+        <figure>
+          <a href="#fp1"><img class="media zoomable" loading="lazy" src="assets/img/ExplainerPic2.jpeg" alt="Fun photo 1"></a>
+          <figcaption>Back when I worked at the Explo!</figcaption>
+        </figure>
+        <figure>
+          <a href="#fp2"><img class="media zoomable" loading="lazy" src="assets/img/ClassVandeGraf.JPG" alt="Fun photo 2"></a>
+          <figcaption>Sparking some joy in my students!</figcaption>
+        </figure>
+        <figure>
+          <a href="#fp3"><img class="media zoomable" loading="lazy" src="assets/img/ElanatEarlyGirl.jpg" alt="Fun photo 3"></a>
+          <figcaption>Early Girl Café in Asheville, NC. Where one of my besties used to work!</figcaption>
+        </figure>
+        <figure>
+          <a href="#fp4"><img class="media zoomable" loading="lazy" src="assets/img/greatwall.jpg" alt="Great Wall"></a>
+          <figcaption>Great Wall of China--it really is great!!</figcaption>
+        </figure>
+        <figure>
+          <a href="#fp5"><img class="media zoomable" loading="lazy" src="assets/img/shanghai.jpg" alt="Shanghai"></a>
+          <figcaption>Shanghai!</figcaption>
+        </figure>
+        <figure>
+          <a href="#fp6"><img class="media zoomable" loading="lazy" src="assets/img/tajmahal.jpg" alt="Taj Mahal"></a>
+          <figcaption>A guy told me to do this pose!</figcaption>
+        </figure>
+        <figure>
+          <a href="#fp7"><img class="media zoomable" loading="lazy" src="assets/img/karaoke.JPG" alt="Karaoke"></a>
+          <figcaption>Karaoke in Kyoto!</figcaption>
+        </figure>
+        <figure>
+          <a href="#fp8"><img class="media zoomable" loading="lazy" src="assets/img/vietcooking.jpg" alt="Vietnamese cooking"></a>
+          <figcaption>Having some Pho-n cooking in Hanoi!</figcaption>
+        </figure>
+        <figure>
+          <a href="#fp9"><img class="media zoomable" loading="lazy" src="assets/img/himalayas.jpg" alt="Himalayan sunrise"></a>
+          <figcaption>Himalayan New Year's Sunrise in Nepal!</figcaption>
+        </figure>
+        <figure>
+          <a href="#fp10"><img class="media zoomable" loading="lazy" src="assets/img/radiotelescope.jpg" alt="Radio Telescope"></a>
+          <figcaption>My DIY Radio Telescope and sprained ankle...</figcaption>
+        </figure>
       </div>
     </section>
   </main>
 
-  <!-- Lightboxes -->
-  <div id="fp1" class="lightbox"><a class="lightbox__close" href="#"></a><img class="lightbox__img" src="assets/img/ExplainerPic2.jpeg" alt="Fun photo 1 enlarged"></div>
-  <div id="fp2" class="lightbox"><a class="lightbox__close" href="#"></a><img class="lightbox__img" src="assets/img/ClassVandeGraf.JPG" alt="Fun photo 2 enlarged"></div>
-  <div id="fp3" class="lightbox"><a class="lightbox__close" href="#"></a><img class="lightbox__img" src="assets/img/ElanatEarlyGirl.jpg" alt="Fun photo 3 enlarged"></div>
-  <div id="fp4" class="lightbox"><a class="lightbox__close" href="#"></a><img class="lightbox__img" src="assets/img/greatwall.jpg" alt="Great Wall"></div>
-  <div id="fp5" class="lightbox"><a class="lightbox__close" href="#"></a><img class="lightbox__img" src="assets/img/shanghai.jpg" alt="Shanghai"></div>
-  <div id="fp6" class="lightbox"><a class="lightbox__close" href="#"></a><img class="lightbox__img" src="assets/img/tajmahal.jpg" alt="Taj Mahal"></div>
-  <div id="fp7" class="lightbox"><a class="lightbox__close" href="#"></a><img class="lightbox__img" src="assets/img/karaoke.JPG" alt="karaoke"></div>
-  <div id="fp8" class="lightbox"><a class="lightbox__close" href="#"></a><img class="lightbox__img" src="assets/img/vietcooking.jpg" alt="vietnamese cooking"></div>
-  <div id="fp9" class="lightbox"><a class="lightbox__close" href="#"></a><img class="lightbox__img" src="assets/img/himalayas.jpg" alt="himalayan sunrise"></div>
-  <div id="fp10" class="lightbox"><a class="lightbox__close" href="#"></a><img class="lightbox__img" src="assets/img/radiotelescope.jpg" alt="Radio Telescope"></div>
+  <!-- Lightboxes with captions -->
+  <div id="fp1" class="lightbox">
+    <a class="lightbox__close" href="#"></a>
+    <img class="lightbox__img" src="assets/img/ExplainerPic2.jpeg" alt="Fun photo 1 enlarged">
+    <div class="lightbox__caption">Science demo fun</div>
+  </div>
+
+  <div id="fp2" class="lightbox">
+    <a class="lightbox__close" href="#"></a>
+    <img class="lightbox__img" src="assets/img/ClassVandeGraf.JPG" alt="Fun photo 2 enlarged">
+    <div class="lightbox__caption">Van de Graaff sparks</div>
+  </div>
+
+  <div id="fp3" class="lightbox">
+    <a class="lightbox__close" href="#"></a>
+    <img class="lightbox__img" src="assets/img/ElanatEarlyGirl.jpg" alt="Fun photo 3 enlarged">
+    <div class="lightbox__caption">Early Girl Café</div>
+  </div>
+
+  <div id="fp4" class="lightbox">
+    <a class="lightbox__close" href="#"></a>
+    <img class="lightbox__img" src="assets/img/greatwall.jpg" alt="Great Wall">
+    <div class="lightbox__caption">Great Wall of China</div>
+  </div>
+
+  <div id="fp5" class="lightbox">
+    <a class="lightbox__close" href="#"></a>
+    <img class="lightbox__img" src="assets/img/shanghai.jpg" alt="Shanghai">
+    <div class="lightbox__caption">Skyline of Shanghai</div>
+  </div>
+
+  <div id="fp6" class="lightbox">
+    <a class="lightbox__close" href="#"></a>
+    <img class="lightbox__img" src="assets/img/tajmahal.jpg" alt="Taj Mahal">
+    <div class="lightbox__caption">Taj Mahal in Agra</div>
+  </div>
+
+  <div id="fp7" class="lightbox">
+    <a class="lightbox__close" href="#"></a>
+    <img class="lightbox__img" src="assets/img/karaoke.JPG" alt="Karaoke">
+    <div class="lightbox__caption">Karaoke night</div>
+  </div>
+
+  <div id="fp8" class="lightbox">
+    <a class="lightbox__close" href="#"></a>
+    <img class="lightbox__img" src="assets/img/vietcooking.jpg" alt="Vietnamese cooking">
+    <div class="lightbox__caption">Cooking class in Vietnam</div>
+  </div>
+
+  <div id="fp9" class="lightbox">
+    <a class="lightbox__close" href="#"></a>
+    <img class="lightbox__img" src="assets/img/himalayas.jpg" alt="Himalayan sunrise">
+    <div class="lightbox__caption">Sunrise in the Himalayas</div>
+  </div>
+
+  <div id="fp10" class="lightbox">
+    <a class="lightbox__close" href="#"></a>
+    <img class="lightbox__img" src="assets/img/radiotelescope.jpg" alt="Radio Telescope">
+    <div class="lightbox__caption">Radio telescope project</div>
+  </div>
 
   <footer class="footer">
     <div class="container inner">
